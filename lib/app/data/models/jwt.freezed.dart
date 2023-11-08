@@ -21,7 +21,7 @@ JWTModel _$JWTModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$JWTModel {
   String? get accessToken => throw _privateConstructorUsedError;
-  String? get refreshToken => throw _privateConstructorUsedError;
+  String get refreshToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $JWTModelCopyWith<$Res> {
   factory $JWTModelCopyWith(JWTModel value, $Res Function(JWTModel) then) =
       _$JWTModelCopyWithImpl<$Res, JWTModel>;
   @useResult
-  $Res call({String? accessToken, String? refreshToken});
+  $Res call({String? accessToken, String refreshToken});
 }
 
 /// @nodoc
@@ -51,17 +51,17 @@ class _$JWTModelCopyWithImpl<$Res, $Val extends JWTModel>
   @override
   $Res call({
     Object? accessToken = freezed,
-    Object? refreshToken = freezed,
+    Object? refreshToken = null,
   }) {
     return _then(_value.copyWith(
       accessToken: freezed == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      refreshToken: freezed == refreshToken
+      refreshToken: null == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ) as $Val);
   }
 }
@@ -74,7 +74,7 @@ abstract class _$$JWTModelImplCopyWith<$Res>
       __$$JWTModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String? accessToken, String? refreshToken});
+  $Res call({String? accessToken, String refreshToken});
 }
 
 /// @nodoc
@@ -89,17 +89,17 @@ class __$$JWTModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? accessToken = freezed,
-    Object? refreshToken = freezed,
+    Object? refreshToken = null,
   }) {
     return _then(_$JWTModelImpl(
       freezed == accessToken
           ? _value.accessToken
           : accessToken // ignore: cast_nullable_to_non_nullable
               as String?,
-      freezed == refreshToken
+      null == refreshToken
           ? _value.refreshToken
           : refreshToken // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as String,
     ));
   }
 }
@@ -115,7 +115,7 @@ class _$JWTModelImpl implements _JWTModel {
   @override
   final String? accessToken;
   @override
-  final String? refreshToken;
+  final String refreshToken;
 
   @override
   String toString() {
@@ -152,7 +152,7 @@ class _$JWTModelImpl implements _JWTModel {
 }
 
 abstract class _JWTModel implements JWTModel {
-  factory _JWTModel(final String? accessToken, final String? refreshToken) =
+  factory _JWTModel(final String? accessToken, final String refreshToken) =
       _$JWTModelImpl;
 
   factory _JWTModel.fromJson(Map<String, dynamic> json) =
@@ -161,7 +161,7 @@ abstract class _JWTModel implements JWTModel {
   @override
   String? get accessToken;
   @override
-  String? get refreshToken;
+  String get refreshToken;
   @override
   @JsonKey(ignore: true)
   _$$JWTModelImplCopyWith<_$JWTModelImpl> get copyWith =>

@@ -9,7 +9,7 @@ part of 'jwt.dart';
 _$JWTModelImpl _$$JWTModelImplFromJson(Map<String, dynamic> json) =>
     _$JWTModelImpl(
       json['accessToken'] as String?,
-      json['refreshToken'] as String?,
+      json['refreshToken'] as String,
     );
 
 Map<String, dynamic> _$$JWTModelImplToJson(_$JWTModelImpl instance) =>

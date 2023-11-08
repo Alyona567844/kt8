@@ -4,4 +4,6 @@ abstract class Constants {
 }
 abstract class ApiEndpoints {
   static const signUp = "register";
+  static const signIn = "signIn";
+  static const refresh = "refresh";
 }

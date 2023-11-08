@@ -1,23 +1,13 @@
 import 'package:get/get.dart';
+import 'package:kt8/app/data/services/api_service.dart';
+import 'package:kt8/app/data/services/auth_service.dart';
+
+import '../../../routes/app_pages.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  ApiService apiService = Get.find();
+  AuthService authService = Get.find();
+  void logout() {
+    apiService.logout();
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

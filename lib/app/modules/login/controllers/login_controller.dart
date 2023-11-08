@@ -1,23 +1,23 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:kt8/app/data/services/api_service.dart';
+import 'package:kt8/app/data/services/auth_service.dart';
+import 'package:kt8/app/routes/app_pages.dart';
 
 class LoginController extends GetxController {
-  //TODO: Implement LoginController
-
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  ApiService apiService = Get.find();
+  AuthService authService = Get.find();
+  var mailController = TextEditingController();
+  var passController = TextEditingController();
+  login() async {
+    bool res = await authService.auth(mailController.text, passController.text);
+    if(res) {
+      authService.isAuth = true;
+      Get.toNamed(Routes.HOME);
+      print("Login is successfull");
+    } else {
+      print('Login In falled');
+    }
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
+  toRegistration()=> Get.toNamed(Routes.REGISTRATION);
 }

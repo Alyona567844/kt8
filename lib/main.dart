@@ -13,12 +13,14 @@ void main() async {
     GetMaterialApp(
       title: "Application",
       initialRoute: AppPages.INITIAL,
+      debugShowCheckedModeBanner: false,
       getPages: AppPages.routes,
     ),
   );
 }
-Future<void> initServices() async{
-  await Get.putAsync(() async => StorageService());
-  await Get.putAsync(() async => AuthService());
-  await Get.putAsync(() async => ApiService());
+
+Future<void> initServices() async {
+  await Get.putAsync(() => StorageService().init());
+  await Get.putAsync(() => ApiService().init());
+  await Get.putAsync(() => AuthService().init());
 }
