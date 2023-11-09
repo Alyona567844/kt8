@@ -4,22 +4,16 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 class StorageService extends GetxService {
   late Box box;
-  void clear() async {
-    await box.clear();
-  }
-  String getRefresh() {
-    return _readData('Refresh') ?? "";
-  }
+  Future<void> clear() async => await box.clear();
+  
+  String getRefresh() => _readData('Refresh') ?? "";
+  
+  Future<void> writeRefresh(String token) => _writeData('Refresh', token);
 
-  void writeRefresh(String token) => _writeData('Refresh', token);
-  Future<void> _writeData(String key, String value) async {
-    box.put(key, value);
-  }
-
-  String? _readData(String key) {
-    return box.get(key);
-  }
-
+  Future<void> _writeData(String key, String value) => box.put(key, value);
+  
+  String? _readData(String key) => box.get(key);
+  
   Future<StorageService> init() async {
     await Hive.initFlutter();
     box = await Hive.openBox('kt');

@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:kt8/app/core/constants.dart';
 import 'package:kt8/app/data/services/auth_service.dart';
 
 import '../../../routes/app_pages.dart';
@@ -25,7 +23,7 @@ class RegistrationController extends GetxController {
       showSnack("Invalid email");
       return;
     }
-    bool res = await authService.signUp(mailController.text, passController.text);
+    bool res = await authService.signup(mailController.text, passController.text);
     if(res) {
       authService.isAuth = true;
       Get.toNamed(Routes.HOME);

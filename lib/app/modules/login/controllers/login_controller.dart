@@ -10,13 +10,13 @@ class LoginController extends GetxController {
   var mailController = TextEditingController();
   var passController = TextEditingController();
   login() async {
-    bool res = await authService.auth(mailController.text, passController.text);
+    bool res = await authService.comein(mailController.text, passController.text);
     if(res) {
       authService.isAuth = true;
       Get.toNamed(Routes.HOME);
-      print("Login is successfull");
+      print('Login is successfull');
     } else {
-      print('Login In falled');
+      print('Login is falled');
     }
   }
   toRegistration()=> Get.toNamed(Routes.REGISTRATION);
