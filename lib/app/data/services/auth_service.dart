@@ -12,27 +12,29 @@ class AuthService extends GetxService {
   Dio client = Dio(BaseOptions(baseUrl: Constants.baseUrl));
   bool isAuth = false;
 
-  String? get accessToken=> _tokens.accessToken;
+  String? get accessToken => _tokens.accessToken;
 
-  Future<bool> refresh() async{
-    try{
-    var res = await client.post(ApiEndpoints.refresh, data: _tokens.toJson());
-    print(res);
-    var tokens = JWTModel.fromJson(res.data);
-    await updateTokens(tokens);
-    if(res.statusCode == 200) return true;
-    }catch(e) {
+  Future<bool> refresh() async {
+    try {
+      var res = await client.post(ApiEndpoints.refresh, data: _tokens.toJson());
+      print(res);
+      var tokens = JWTModel.fromJson(res.data);
+      await updateTokens(tokens);
+      if (res.statusCode == 200) return true;
+    } catch (e) {
       print(e);
     }
     isAuth = false;
     return false;
   }
-  void logout(){
+
+  void logout() {
     isAuth = false;
     storageService.clear();
     _tokens = JWTModel(null, '');
     Get.offNamed(Routes.LOGIN);
   }
+
   Future<bool> comein(String email, String password) async =>
       _auth(email, password, ApiEndpoints.signIn);
   Future<bool> signup(String email, String password) async =>
@@ -68,7 +70,6 @@ class AuthService extends GetxService {
   //   return false;
   // }
 
-  
   Future<void> updateTokens(JWTModel tokens) async {
     _tokens = tokens;
     await storageService.writeRefresh(tokens.refreshToken);

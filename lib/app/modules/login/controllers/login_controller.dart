@@ -14,9 +14,9 @@ class LoginController extends GetxController {
     if(res) {
       authService.isAuth = true;
       Get.toNamed(Routes.HOME);
-      print('Login is successfull');
+      print('Login is successful');
     } else {
-      print('Login is falled');
+      print('Login is unsuccessful');
     }
   }
   toRegistration()=> Get.toNamed(Routes.REGISTRATION);

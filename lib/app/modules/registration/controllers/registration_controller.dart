@@ -27,9 +27,9 @@ class RegistrationController extends GetxController {
     if(res) {
       authService.isAuth = true;
       Get.toNamed(Routes.HOME);
-      showSnack("Registration is successfull", isError: false);
+      showSnack("Registration is successful", isError: false);
     } else {
-      showSnack('Registration falled');
+      showSnack('Registration is unsucessful');
     }
   }
   void showSnack(
